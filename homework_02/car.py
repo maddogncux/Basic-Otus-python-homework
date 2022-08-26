@@ -7,5 +7,5 @@ from homework_02.engine import Engine
 
 class Car(Vehicle):
 
-    def set_engine(self, Engine):
+    def set_engine(self, engine):
         self.engine = engine
