@@ -5,7 +5,7 @@ from homework_02.engine import Engine
 """
 
 
-class Car(Vehicle, Engine):
+class Car(Vehicle):
 
     def set_engine(self, Engine):
-        self.engine = Engine
+        self.engine = engine
