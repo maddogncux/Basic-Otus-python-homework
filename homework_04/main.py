@@ -43,16 +43,24 @@ import asyncio
 
 from jsonplaceholder_requests import USERS_DATA_URL, POSTS_DATA_URL, fetch_json
 
-from models import create_pg_docker,created_db_tables,cmd, save_post_in_db,save_user_in_db
+from models import create_pg_docker, save_users_and_post, cmd, created_db_tables
+
 
 async def async_main():
     await create_pg_docker(cmd)
     await created_db_tables()
-    user_data, post_data = await asyncio.gather(fetch_json(USERS_DATA_URL),
-                                                fetch_json(POSTS_DATA_URL))
-    await save_user_in_db(user_data)
-    await save_post_in_db(post_data)
 
+    users_data, posts_data = await asyncio.gather(
+        fetch_json(USERS_DATA_URL),
+        fetch_json(POSTS_DATA_URL),
+    )
+
+    await save_users_and_post(users_data, posts_data)
+    # await save_user_in_db(posts_data)
+    # user_data, post_data = await asyncio.gather(fetch_json(USERS_DATA_URL),
+    #                                             (fetch_json(USERS_DATA_URL))
+    # await save_user_in_db(user_data)
+    # await save_user_in_db(post_data)
 
 
 def main():

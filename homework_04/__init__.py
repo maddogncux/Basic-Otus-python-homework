@@ -4,4 +4,5 @@ __all__ = [
     "models",
     "jsonplaceholder_requests",
     "main",
+    "config"
 ]
