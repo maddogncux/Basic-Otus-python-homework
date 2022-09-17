@@ -1,4 +1,4 @@
-import os
+
 from loguru import logger
 import asyncio
 from sqlalchemy import (
@@ -12,7 +12,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, AsyncEngin
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship, declared_attr
 import config
 import os
-PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or 'postgresql+asyncpg://username:passwd!@localhost:5433/blog'
+PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or 'postgresql+asyncpg://username:passwd!@localhost:5437/blog'
 
 # engine = create_async_engine(DB_ASYNC_URL, echo=DB_ECHO)
 async_engine: AsyncEngine = create_async_engine(
@@ -30,7 +30,7 @@ Session = sessionmaker(
 
 
 # Base = declarative_base()
-class Base():
+class Base:
     @declared_attr
     def __tablename__(cls):
         return f"{cls.__name__.lower()}s"
@@ -53,12 +53,12 @@ class User(Base):
 
     posts = relationship('Post', back_populates='user')
 
-
     def __str__(self):
         return f'{self.__class__.__name__}(id={self.id}, ' \
                f'name={self.name!r}, ' \
                f'username={self.username!r},' \
                f'email={self.email}),'\
+
 
     def __repr__(self):
         return str(self)
@@ -78,11 +78,12 @@ class Post(Base):
                f' body={self.body!r}),' \
 
 
-
     def __repr__(self):
         return str(self)
 
 # запускаем докер, вызвав команду в консоли используя create_subprocess_shell(cmd)
+
+
 cmd = 'docker compose up -d'
 
 
@@ -120,7 +121,6 @@ async def save_users_and_post(u_data, p_data):
                         post = Post(user_id=user_id, title=title, body=body)
                         session.add(post)
                     # session.commit()
-
 
 
 # class User(Base):
