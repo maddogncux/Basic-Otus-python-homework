@@ -22,7 +22,7 @@ class Vehicle(ABC):
         if self.started:
             print("engine allready started.i will turn off it")
             self.started = self.started
-        # else:
+        # else:                            # block not reachable
         #     print("engine turn OFF")
         #     self.started = False
 
