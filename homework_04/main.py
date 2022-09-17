@@ -23,7 +23,7 @@ from models import create_pg_docker, save_users_and_post, cmd, created_db_tables
 
 
 async def async_main():
-    await create_pg_docker(cmd)
+    # await create_pg_docker(cmd)
     await created_db_tables()
 
     users_data, posts_data = await asyncio.gather(

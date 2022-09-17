@@ -130,7 +130,8 @@ async def save_users_and_post(u_data, p_data):
 #     name = Column(String, nullable=False, default='', server_default='')
 #     username = Column(String, nullable=False, default='', server_default='')
 #     email = Column(String, nullable=False, default='', server_default='')
-#     created_at = Column(DateTime, nullable=False, default=datetime.utcnow, server_default=func.now())  # do a timestemps
+#     created_at = Column(DateTime, nullable=False, default=datetime.utcnow, server_default=func.now())
+# do a timestemps
 #
 #     posts = relationship('User_id', back_populates='id')
 #
@@ -162,9 +163,6 @@ async def save_users_and_post(u_data, p_data):
 #
 #     def __repr__(self):
 #         return str(self)
-
-
-
 
 
 # cоздаем ф-ю, которая скачивает с сайта юзеров и сохраняет их в БД
