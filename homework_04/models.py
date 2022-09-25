@@ -12,7 +12,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, AsyncEngin
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship, declared_attr
 import config
 import os
-PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://username:passwd!@localhost:5433/blog"
+PG_CONN_URI = os.environ.get("DB_ASYNC_URL") or "postgresql+asyncpg://username:passwd!@localhost:5433/blog"
 
 # engine = create_async_engine(DB_ASYNC_URL, echo=DB_ECHO)
 async_engine: AsyncEngine = create_async_engine(
@@ -20,7 +20,7 @@ async_engine: AsyncEngine = create_async_engine(
     echo=config.DB_ECHO,
 )
 
-# async_session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
+# Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 Session = sessionmaker(
     async_engine,
     class_=AsyncSession,
