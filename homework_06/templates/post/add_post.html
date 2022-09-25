@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}
+ Index Page
+{% endblock %}
+
+{%block head%}
+<h1>ADD Post</h1>
+{% endblock %}
+
+{% block body %}
+
+
+
+
+<form method="post">
+
+<!--<div class="mb-3">-->
+<!--  <label for="id-name" class="form-label">UserName</label>-->
+<!--  <input name="user-name" type="text" class="form-control" id="id-name" placeholder="UserName">-->
+<!--</div>-->
+<!--<div class="mb-3">-->
+<!--    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>-->
+<!--  <textarea name="post-body"  class=form-label" id="exampleFormControlTextarea1" rows="3"></textarea>-->
+<!--</div>-->
+    {{ form.hidden_tag() }}
+    {{ form.name.label(class="form-label") }}
+    {{ form.name(size=16,class="form-control") }}
+
+    {{ form.post.label(class="form-control") }}
+    {{ form.post(size=300,class="form-label",rows="3") }}
+
+    {% if form.name.errors %}
+     <ul class="errors">
+      {% for error in form.name.errors %}
+         <li>{{ error }}</li>
+        {% endfor %}
+     </ul>
+    {% endif %}
+
+    {% if form.post.errors %}
+     <ul class="errors">
+      {% for error in form.post.errors %}
+         <li>{{ error }}</li>
+        {% endfor %}
+     </ul>
+    {% endif %}
+
+
+    <button type="submit" class="btn btn-outline-secondary">Post</button>
+</form>
+{% endblock %}

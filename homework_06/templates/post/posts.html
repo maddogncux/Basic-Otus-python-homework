@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+ Posts From Db
+{% endblock %}
+ Cookies Cookies Cookies Cookies Cookies
+{%block head%}
+<h1> Post from db</h1>
+{% endblock %}
+
+{% block body %}
+
+ <ul>
+  {% if post %}
+   list of post
+    {% for post in post  %}
+
+   <li>
+    <a href="{{ url_for('post_app.one_post', post_id = post.id) }}">
+     {{post.post}}
+    </a>
+   </li>
+  {% endfor%}
+ </ul>
+{% else %}
+ no post
+{% endif %}
+
+<div>
+ <a href="{{ url_for('post_app.add') }}">Create post</a>
+</div>
+{% endblock %}

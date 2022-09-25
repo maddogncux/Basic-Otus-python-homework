@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}
+Post #{{post_id}} {{post_body}}
+{% endblock %}
+Post #{{post_id}} {{post_body}}
+{%block head%}
+<h1> Post from db</h1>
+{% endblock %}
+
+{% block body %}
+<h1>Id - #{{post.id}}
+  <br> Name - {{post.name}}
+  <br>Post - {{post.post}}</h1>
+
+<form>
+ <input type="button" class="btn btn-outline-secondary" value="back!" onclick="history.go(-1)">
+</form>
+<!-- Button trigger modal -->
+<button type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">
+  Delete post
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Delete post #{{ post_id }} </h5>
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        delete post?
+        <p>{{ post_body }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal">Close</button>
+        <form method="post">
+        <button type="submit"
+                class="btn btn-danger"
+
+                id="btn-confirm-delete"
+                data-bs-dismiss="modal"
+                >
+          Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<
+
+{% endblock %}
