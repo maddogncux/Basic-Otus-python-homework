@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "HomeWork3"
+version = "0.1.0"
+description = "Homework 3 docker and webapp on fastapi"
+authors = ["maddogncux <madddogncux@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.79.0"
+uvicorn = "^0.18.2"
+pytest = "^7.1.2"
+
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
